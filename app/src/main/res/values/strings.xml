@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Pmdm-t2a6-Canet-Fran</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">login</string>
+    <string name="title_activity_bienvenida">Bienvenida</string>
+    <string name="title_activity_cambiar_clave">cambiarClave</string>
+    <string name="title_activity_cambia_clave">cambia_clave</string>
+</resources>
