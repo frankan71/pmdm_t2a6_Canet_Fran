@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,9 +47,11 @@ public class posicionGlobal extends AppCompatActivity {
             //numeroCuentas.add ("Nº de Cuenta (" + (i+1)+"): "+ Cuentas.get(i).getNumeroCuenta());
             //saldos.add ("Saldo actual: "+ Cuentas.get(i).getSaldoActual() );
         //}
+        //Vamos a darle a saldo formato de numero
+        NumberFormat formatoImporte = NumberFormat.getCurrencyInstance();
 
         for (int i=0; i<Cuentas.size(); i++){
-            tareas.add(new Tarea(" Nº Cuenta: "+Cuentas.get(i).getNumeroCuenta(), " Saldo: "+String.valueOf(Cuentas.get(i).getSaldoActual())+"€"));
+            tareas.add(new Tarea(" Nº Cuenta: "+Cuentas.get(i).getNumeroCuenta(), " Saldo: "+formatoImporte.format((Cuentas.get(i).getSaldoActual()))));
         }
 
         //Creo la referencia a la lista
