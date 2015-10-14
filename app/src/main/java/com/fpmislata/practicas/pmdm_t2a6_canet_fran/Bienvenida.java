@@ -8,10 +8,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import mibancooperacional.bd.MiBancoOperacional;
+import mibancooperacional.pojo.Cliente;
+import mibancooperacional.pojo.Cuenta;
+
 public class Bienvenida extends AppCompatActivity {
 
     //Creamos las variables para enlazar con los campos de la activity
     private TextView tv_bienvenida;
+
+
+    Cliente cli;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +36,11 @@ public class Bienvenida extends AppCompatActivity {
 
         //Mostramos el mensaje de bienvenida en el textView
         tv_bienvenida.setText("Bienvenido "+ dniRecibido);
+
+
+        //Aquí cojo del bundle el cliente que está serializado, por lo que tengo que acer un cast a Cliente
+        Bundle bolsaRecibida=getIntent().getExtras();
+        cli=(Cliente) bolsaRecibida.getSerializable("clientekey");
 
 
     }
@@ -56,5 +70,17 @@ public class Bienvenida extends AppCompatActivity {
     public void botonClave(View view){
         Intent intent = new Intent(Bienvenida.this, cambiarClave.class);
         startActivity(intent);
+    }
+
+
+    public void botonPosicionGlobal(View view){
+        //Pasos para crear un Bundle y enviarlo a la siguiente activity
+        Intent intent=new Intent (Bienvenida.this, posicionGlobal.class);
+        Bundle bolsa=new Bundle();
+        bolsa.putSerializable("clientekey", cli);
+        intent.putExtras(bolsa);
+        startActivity(intent);
+
+
     }
 }

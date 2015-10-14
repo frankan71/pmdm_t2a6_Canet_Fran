@@ -61,19 +61,19 @@ public class login extends AppCompatActivity {
     public void botonEntrar(View view){
         //Paso a String el EditText et_dni
         String dni=et_dni.getText().toString();
-        String password=et_dni.getText().toString();
+        String password=et_password.getText().toString();
 
-        Cliente a = new Cliente();
-        a.setNif(dni);
-        a.setClaveSeguridad(password);
-        Toast toast1= Toast.makeText(this, a.getNif()+" "+a.getClaveSeguridad(), Toast.LENGTH_LONG);
-        toast1.show();
+        Cliente cli = new Cliente();
+        cli.setNif(dni);
+        cli.setClaveSeguridad(password);
+        //Toast toast1= Toast.makeText(this, a.getNif()+" "+a.getClaveSeguridad(), Toast.LENGTH_LONG);
+        //toast1.show();
 
         MiBancoOperacional mbo=MiBancoOperacional.getInstance(this);
 
-        a=mbo.login(a);
+        cli=mbo.login(cli);
 
-        if (a==null){
+        if (cli==null){
             Toast toast= Toast.makeText(this, "El nombre de usuario o contraseña no es válido", Toast.LENGTH_LONG);
             toast.show();
             //Limpiar valores et_dni y et_password
@@ -84,10 +84,17 @@ public class login extends AppCompatActivity {
 
 
             //Creamos el intent que nos llevará a la pantalla de bienvenida
-            Intent intent = new Intent(login.this, Bienvenida.class);
-            //Enviamos la ifnormación del dni mediante el Intent a la pantalla de bienvenida
-            intent.putExtra("mensaje", dni);
+            //Intent intent = new Intent(login.this, Bienvenida.class);
+            //Enviamos la información del dni mediante el Intent a la pantalla de bienvenida
+            //intent.putExtra("mensaje", dni);
             //iniciamos el Intent
+
+
+            //Pasos para crear un Bundle y enviarlo a la siguiente activity
+            Intent intent=new Intent (login.this, Bienvenida.class);
+            Bundle bolsa=new Bundle();
+            bolsa.putSerializable("clientekey", cli);
+            intent.putExtras(bolsa);
             startActivity(intent);
         }
     }

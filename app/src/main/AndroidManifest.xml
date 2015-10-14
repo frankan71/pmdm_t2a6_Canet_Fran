@@ -29,6 +29,8 @@
             android:label="@string/title_activity_cambiar_clave"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity android:name=".posicionGlobal" >
+        </activity>
     </application>
 
 </manifest>

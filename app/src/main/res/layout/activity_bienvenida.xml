@@ -55,7 +55,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/bt_global"
-                android:background="@drawable/btn_circle" />
+                android:background="@drawable/btn_circle"
+                android:onClick="botonPosicionGlobal" />
 
             <TextView
                 android:layout_width="fill_parent"
