@@ -31,6 +31,8 @@
         </activity>
         <activity android:name=".posicionGlobal" >
         </activity>
+        <activity android:name=".movimientosCuenta" >
+        </activity>
     </application>
 
 </manifest>

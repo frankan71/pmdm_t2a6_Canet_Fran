@@ -27,21 +27,21 @@ public class Bienvenida extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bienvenida);
 
+
+        //Aquí cojo del bundle el cliente que está serializado, por lo que tengo que acer un cast a Cliente
+        Bundle bolsaRecibida=getIntent().getExtras();
+        cli=(Cliente) bolsaRecibida.getSerializable("clientekey");
+
+
         //Recogemos el dato que recibimos con el Intent
-        String dniRecibido=getIntent().getStringExtra("mensaje");
+        //String dniRecibido=getIntent().getStringExtra("mensaje");
 
         //Enlazamos la variable creada con el campo correspondiente de la activity
         tv_bienvenida=(TextView)findViewById(R.id.tv_bienvenida);
 
 
         //Mostramos el mensaje de bienvenida en el textView
-        tv_bienvenida.setText("Bienvenido "+ dniRecibido);
-
-
-        //Aquí cojo del bundle el cliente que está serializado, por lo que tengo que acer un cast a Cliente
-        Bundle bolsaRecibida=getIntent().getExtras();
-        cli=(Cliente) bolsaRecibida.getSerializable("clientekey");
-
+        tv_bienvenida.setText("Bienvenido "+ cli.getNombre().toString());
 
     }
 
@@ -69,6 +69,10 @@ public class Bienvenida extends AppCompatActivity {
 
     public void botonClave(View view){
         Intent intent = new Intent(Bienvenida.this, cambiarClave.class);
+        Bundle bolsa=new Bundle();
+        bolsa.putSerializable("clientekey", cli);
+        intent.putExtras(bolsa);
+
         startActivity(intent);
     }
 
@@ -80,7 +84,6 @@ public class Bienvenida extends AppCompatActivity {
         bolsa.putSerializable("clientekey", cli);
         intent.putExtras(bolsa);
         startActivity(intent);
-
 
     }
 }
